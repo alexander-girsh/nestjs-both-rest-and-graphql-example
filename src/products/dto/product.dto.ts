@@ -129,5 +129,5 @@ export class ProductDto {
     name: 'category',
     description: 'Full data of category of product. GraphQL only.',
   })
-  category: never;
+  category?: never;
 }
