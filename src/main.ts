@@ -21,5 +21,5 @@ NestFactory.create(AppModule).then((app) => {
 
   app.useGlobalPipes(new ValidationPipe({}));
 
-  app.listen(3000);
+  app.listen(process.env.PORT || 3000);
 });
