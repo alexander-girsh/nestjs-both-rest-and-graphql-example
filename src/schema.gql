@@ -1,0 +1,112 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Complete schema of category"""
+type CategoryDto {
+  """Unique name (also used as PK) of category"""
+  categoryName: String!
+
+  """.categoryName of parent category. Optional."""
+  parentCategoryName: String
+
+  """Full list of products in category. GraphQL only."""
+  products: [ProductDto!]!
+}
+
+"""Is used to create the new category"""
+input CreateCategoryDto {
+  """Unique name of category"""
+  categoryName: String!
+
+  """Name of parent category"""
+  parentCategoryName: String = null
+}
+
+"""Is used to create new products"""
+input CreateProductDto {
+  """Name of existent category which product belongs to"""
+  categoryName: String!
+
+  """
+  Links to product images. The first array entry is the main product image. Array entries may be rearranged by user (action is not implemented).
+  """
+  imageLinks: [String!]!
+
+  """Price of product in unknown currency"""
+  price: Float!
+
+  """Displayed title of product"""
+  title: String!
+}
+
+"""List of accepted fields to filter the categories list"""
+input FindCategoryDto {
+  """Unique name of category"""
+  categoryName: String
+
+  """Name of parent category"""
+  parentCategoryName: String
+}
+
+input FindProductDto {
+  categoryName: String
+  price: Float
+  productId: String
+  status: String
+  title: String
+}
+
+type Mutation {
+  createCategory(createCategoryDto: CreateCategoryDto!): CategoryDto!
+  createProduct(createProductDto: CreateProductDto!): ProductDto!
+  removeCategory(categoryName: String!): CategoryDto!
+  updateCategory(categoryName: String!, updateCategoryDto: UpdateCategoryDto!): CategoryDto!
+  updateProduct(productId: String!, updateProductDto: UpdateProductDto!): ProductDto!
+}
+
+"""Full schema of product"""
+type ProductDto {
+  """Full data of category of product. GraphQL only."""
+  category: CategoryDto!
+
+  """Name of existent category which product belongs to"""
+  categoryName: String!
+
+  """
+  Links to product images. The first array entry is the main product image. Array entries may be rearranged by user (action is not implemented).
+  """
+  imageLinks: [String!]!
+
+  """Product price in unknown currency"""
+  price: Float!
+
+  """Unique product id (auto-generated string)"""
+  productId: String!
+
+  """Current status of product"""
+  status: String!
+
+  """Displayed title of product. Is required"""
+  title: String!
+}
+
+type Query {
+  listCategories(findCategoryDto: FindCategoryDto!): [CategoryDto!]!
+  listProducts(findProductDto: FindProductDto!): [ProductDto!]!
+}
+
+"""used to update the category"""
+input UpdateCategoryDto {
+  """Unique name of category"""
+  categoryName: String!
+
+  """Name of parent category"""
+  parentCategoryName: String = null
+}
+
+"""Is used to update product status"""
+input UpdateProductDto {
+  """New status of product to set"""
+  status: String!
+}
