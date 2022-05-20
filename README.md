@@ -18,6 +18,10 @@ Weak spots
 
 Usage
 ===
+Requirements
+---
+* `node.js 16.15.0 or above`
+
 Development
 ---
 * `yarn install`
