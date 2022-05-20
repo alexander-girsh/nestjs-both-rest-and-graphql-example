@@ -15,6 +15,8 @@ import { CategoryDto } from '../categories/dto/category.dto';
       driver: ApolloDriver,
       autoSchemaFile: path.join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
+      introspection: true,
+      playground: true,
     }),
   ],
 })
