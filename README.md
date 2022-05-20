@@ -11,8 +11,8 @@ For unit tests I used the simple in-memory storage with custom provider
 which imitates the rdbms behaviour and accords the dependencies inversion principle.
 
 Weak spots
----
-* The storage for collections of `categories` and `products`  
+--- 
+* No security headers solution (for e.g helmet etc. )
 * No logger
 
 
